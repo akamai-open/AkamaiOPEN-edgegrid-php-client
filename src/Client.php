@@ -111,6 +111,14 @@ class Client extends \GuzzleHttp\Client implements \Psr\Log\LoggerAwareInterface
         $config['headers']['User-Agent'] = 'Akamai-Open-Edgegrid-PHP/' .
             self::VERSION . ' ' . \GuzzleHttp\default_user_agent();
 
+        if (isset($_ENV['AKAMAI_CLI']) && isset($_ENV['AKAMAI_CLI_VERSION'])) {
+            $config['headers']['User-Agent'] .= " AkamaiCLI/" . $_ENV['AKAMAI_CLI_VERSION'];
+        }
+
+        if (isset($_ENV['AKAMAI_CLI_COMMAND'])) {
+            $config['headers']['User-Agent'] .= " AkamaiCLI-" . $_ENV['AKAMAI_CLI_COMMAND'] . "/" . $_ENV['AKAMAI_CLI_COMMAND'];
+        }
+
         parent::__construct($config);
     }
 
