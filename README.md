@@ -156,6 +156,7 @@ To enable `Debug` call `Client->setInstanceDebug()`, `Client::setDebug()`, or se
 $auth = \Akamai\Open\EdgeGrid\Handler\Authentication::createFromEdgeRcFile();
 // or:
 $auth = new \Akamai\Open\EdgeGrid\Handler\Authentication;
+$auth->setSigner();
 $auth->setAuth($client_token, $client_secret, $access_token);
 
 // Create the handler stack
