@@ -200,13 +200,11 @@ $guzzle = new \GuzzleHttp\Client([
 ]);
 ```
 
-### Using PHP 5.3 (not recommended)
+## Contributing
 
-> PHP 5.3 has been EOL since August 14th, 2014, and has **known** security vulnerabilities, therefore we do not recommend using it.
-> However, we understand that many actively supported LTS distributions are still shipping with PHP 5.3, and therefore we are providing
-> the following information.
+### Building documentation
 
-The signer itself is PHP 5.3 compatible and has been moved to the [akamai-open/edgegrid-auth](https://packagist.org/packages/akamai-open/edgegrid-auth) package.
+`phpDocumentor` should be installed and available on `PATH` as `phpdoc`.
 
 ## Author
 

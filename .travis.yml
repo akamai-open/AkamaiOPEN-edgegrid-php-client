@@ -2,10 +2,7 @@ language: php
 services:
   - mysql
 php:
-  - 5.5
-  - 5.6
-  - 7.0
-  - 7.1
+  - 7.3
   - nightly
   - hhvm
 env:
@@ -40,15 +37,6 @@ matrix:
     - php: hhvm
     # PHP nightly may fail in all configuration
     - php: nightly
-    # PHP < dev version may fail with composer.lock
-    # Currently running PHP 7.1
-    - php: 5.5
-      env: DEPS='lock'
-    - php: 5.6
-      env: DEPS='lock'
-    - php: 7.0
-      env: DEPS='lock'
-    # Everything except HHVM/nightly should pass with high/low
 
 sudo: false
 before_install:
@@ -59,7 +47,7 @@ install:
   - if [ "$DEPS" == "low" ];  then travis_retry composer update --prefer-lowest --no-interaction --prefer-source; fi;
   - if [ "$DEPS" == "high" ];  then travis_retry composer update --no-interaction --prefer-source; fi;
   - composer show --tree
-script: php vendor/bin/phpunit
+script: composer test
 after_script: if (( `php -r 'echo PHP_MAJOR_VERSION;'` == 7 )); then wget https://scrutinizer-ci.com/ocular.phar && php ocular.phar code-coverage:upload --format=php-clover build/coverage/coverage.clover; fi;
 notifications:
   slack:

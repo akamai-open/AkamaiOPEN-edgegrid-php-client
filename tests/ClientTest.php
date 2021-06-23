@@ -25,9 +25,9 @@ use GuzzleHttp\Psr7\Response;
  * @version 1.0
  * @requires PHP 5.5
  */
-class ClientTest extends \PHPUnit_Framework_TestCase
+class ClientTest extends \PHPUnit\Framework\TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         Client::setVerbose(false);
         Client::setDebug(false);
@@ -167,7 +167,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     {
         $_SERVER['HOME'] = __DIR__ . '/edgerc';
         $client = \Akamai\Open\EdgeGrid\Client::createFromEdgeRcFile($section, $file);
-        $authentication = \PHPUnit_Framework_Assert::readAttribute($client, 'authentication');
+        $authentication = \PHPUnit\Framework\Assert::readAttribute($client, 'authentication');
 
         $this->assertInstanceOf(\Akamai\Open\EdgeGrid\Client::class, $client);
         $this->assertEquals(
@@ -176,13 +176,13 @@ class ClientTest extends \PHPUnit_Framework_TestCase
                 'client_secret' => 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=',
                 'access_token' => 'akab-access-token-xxx-xxxxxxxxxxxxxxxx'
             ],
-            \PHPUnit_Framework_Assert::readAttribute($authentication, 'auth')
+            \PHPUnit\Framework\Assert::readAttribute($authentication, 'auth')
         );
         $this->assertEquals(
             'https://akaa-baseurl-xxxxxxxxxxx-xxxxxxxxxxxxx.luna.akamaiapis.net',
             $client->getConfig('base_uri')
         );
-        $this->assertEquals(2048, \PHPUnit_Framework_Assert::readAttribute($authentication, 'max_body_size'));
+        $this->assertEquals(2048, \PHPUnit\Framework\Assert::readAttribute($authentication, 'max_body_size'));
     }
 
     /**
@@ -199,7 +199,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $client = \Akamai\Open\EdgeGrid\Client::createFromEnv();
         $this->assertInstanceOf(\Akamai\Open\EdgeGrid\Client::class, $client);
 
-        $authentication = \PHPUnit_Framework_Assert::readAttribute($client, 'authentication');
+        $authentication = \PHPUnit\Framework\Assert::readAttribute($client, 'authentication');
         $this->assertInstanceOf(\Akamai\Open\EdgeGrid\Authentication::class, $authentication);
 
         $this->assertEquals(
@@ -208,7 +208,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
                 'client_secret' => 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=',
                 'access_token' => 'akab-access-token-xxx-xxxxxxxxxxxxxxxx'
             ),
-            \PHPUnit_Framework_Assert::readAttribute($authentication, 'auth')
+            \PHPUnit\Framework\Assert::readAttribute($authentication, 'auth')
         );
 
         /** @var \GuzzleHttp\Psr7\Uri $base_uri */
@@ -218,7 +218,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
             'akaa-baseurl-xxxxxxxxxxx-xxxxxxxxxxxxx.luna.akamaiapis.net',
             $base_uri->getHost()
         );
-        $this->assertEquals(2048, \PHPUnit_Framework_Assert::readAttribute($authentication, 'max_body_size'));
+        $this->assertEquals(2048, \PHPUnit\Framework\Assert::readAttribute($authentication, 'max_body_size'));
     }
 
     /**
@@ -235,7 +235,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $client = \Akamai\Open\EdgeGrid\Client::createFromEnv();
         $this->assertInstanceOf(\Akamai\Open\EdgeGrid\Client::class, $client);
 
-        $authentication = \PHPUnit_Framework_Assert::readAttribute($client, 'authentication');
+        $authentication = \PHPUnit\Framework\Assert::readAttribute($client, 'authentication');
         $this->assertInstanceOf(\Akamai\Open\EdgeGrid\Authentication::class, $authentication);
 
         $this->assertEquals(
@@ -244,7 +244,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
                 'client_secret' => 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=',
                 'access_token' => 'akab-access-token-xxx-xxxxxxxxxxxxxxxx'
             ),
-            \PHPUnit_Framework_Assert::readAttribute($authentication, 'auth')
+            \PHPUnit\Framework\Assert::readAttribute($authentication, 'auth')
         );
 
         /** @var \GuzzleHttp\Psr7\Uri $base_uri */
@@ -254,7 +254,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
             'akaa-baseurl-xxxxxxxxxxx-xxxxxxxxxxxxx.luna.akamaiapis.net',
             $base_uri->getHost()
         );
-        $this->assertEquals(2048, \PHPUnit_Framework_Assert::readAttribute($authentication, 'max_body_size'));
+        $this->assertEquals(2048, \PHPUnit\Framework\Assert::readAttribute($authentication, 'max_body_size'));
     }
 
     /**
@@ -277,7 +277,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $client = \Akamai\Open\EdgeGrid\Client::createFromEnv('testing');
         $this->assertInstanceOf(\Akamai\Open\EdgeGrid\Client::class, $client);
 
-        $authentication = \PHPUnit_Framework_Assert::readAttribute($client, 'authentication');
+        $authentication = \PHPUnit\Framework\Assert::readAttribute($client, 'authentication');
         $this->assertInstanceOf(\Akamai\Open\EdgeGrid\Authentication::class, $authentication);
 
         $this->assertEquals(
@@ -286,7 +286,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
                 'client_secret' => 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=',
                 'access_token' => 'akab-access-token-xxx-xxxxxxxxxxxxxxxx'
             ),
-            \PHPUnit_Framework_Assert::readAttribute($authentication, 'auth')
+            \PHPUnit\Framework\Assert::readAttribute($authentication, 'auth')
         );
 
         /** @var \GuzzleHttp\Psr7\Uri $base_uri */
@@ -296,7 +296,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
             'akaa-baseurl-xxxxxxxxxxx-xxxxxxxxxxxxx.luna.akamaiapis.net',
             $base_uri->getHost()
         );
-        $this->assertEquals(2048, \PHPUnit_Framework_Assert::readAttribute($authentication, 'max_body_size'));
+        $this->assertEquals(2048, \PHPUnit\Framework\Assert::readAttribute($authentication, 'max_body_size'));
     }
 
     /**
@@ -312,7 +312,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $client = \Akamai\Open\EdgeGrid\Client::createFromEnv('testing');
         $this->assertInstanceOf(\Akamai\Open\EdgeGrid\Client::class, $client);
 
-        $authentication = \PHPUnit_Framework_Assert::readAttribute($client, 'authentication');
+        $authentication = \PHPUnit\Framework\Assert::readAttribute($client, 'authentication');
         $this->assertInstanceOf(\Akamai\Open\EdgeGrid\Authentication::class, $authentication);
 
         $this->assertEquals(
@@ -321,13 +321,13 @@ class ClientTest extends \PHPUnit_Framework_TestCase
                 'client_secret' => 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=',
                 'access_token' => 'akab-access-token-xxx-xxxxxxxxxxxxxxxx'
             ),
-            \PHPUnit_Framework_Assert::readAttribute($authentication, 'auth')
+            \PHPUnit\Framework\Assert::readAttribute($authentication, 'auth')
         );
         $this->assertEquals(
             'akaa-baseurl-xxxxxxxxxxx-xxxxxxxxxxxxx.luna.akamaiapis.net',
             $authentication->getHost()
         );
-        $this->assertEquals(131072, \PHPUnit_Framework_Assert::readAttribute($authentication, 'max_body_size'));
+        $this->assertEquals(131072, \PHPUnit\Framework\Assert::readAttribute($authentication, 'max_body_size'));
     }
 
     /**
@@ -365,7 +365,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         );
         $this->assertInstanceOf(\Akamai\Open\EdgeGrid\Client::class, $client);
 
-        $authentication = \PHPUnit_Framework_Assert::readAttribute($client, 'authentication');
+        $authentication = \PHPUnit\Framework\Assert::readAttribute($client, 'authentication');
         $this->assertInstanceOf(\Akamai\Open\EdgeGrid\Authentication::class, $authentication);
 
         $this->assertEquals(
@@ -374,13 +374,13 @@ class ClientTest extends \PHPUnit_Framework_TestCase
                 'client_secret' => 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=',
                 'access_token' => 'akab-access-token-xxx-xxxxxxxxxxxxxxxx'
             ),
-            \PHPUnit_Framework_Assert::readAttribute($authentication, 'auth')
+            \PHPUnit\Framework\Assert::readAttribute($authentication, 'auth')
         );
         $this->assertEquals(
             'akaa-baseurl-xxxxxxxxxxx-xxxxxxxxxxxxx.luna.akamaiapis.net',
             $authentication->getHost()
         );
-        $this->assertEquals(2048, \PHPUnit_Framework_Assert::readAttribute($authentication, 'max_body_size'));
+        $this->assertEquals(2048, \PHPUnit\Framework\Assert::readAttribute($authentication, 'max_body_size'));
     }
 
     public function testCreateInstanceFallbackEdgeRc()
@@ -394,13 +394,13 @@ class ClientTest extends \PHPUnit_Framework_TestCase
                 'client_secret' => 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=',
                 'access_token' => 'akab-access-token-xxx-xxxxxxxxxxxxxxxx'
             ),
-            \PHPUnit_Framework_Assert::readAttribute($authentication, 'auth')
+            \PHPUnit\Framework\Assert::readAttribute($authentication, 'auth')
         );
         $this->assertEquals(
             'akaa-baseurl-xxxxxxxxxxx-xxxxxxxxxxxxx.luna.akamaiapis.net',
             $authentication->getHost()
         );
-        $this->assertEquals(2048, \PHPUnit_Framework_Assert::readAttribute($authentication, 'max_body_size'));
+        $this->assertEquals(2048, \PHPUnit\Framework\Assert::readAttribute($authentication, 'max_body_size'));
     }
 
     /**
@@ -423,13 +423,13 @@ class ClientTest extends \PHPUnit_Framework_TestCase
                 'client_secret' => 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=',
                 'access_token' => 'akab-access-token-xxx-xxxxxxxxxxxxxxxx'
             ),
-            \PHPUnit_Framework_Assert::readAttribute($authentication, 'auth')
+            \PHPUnit\Framework\Assert::readAttribute($authentication, 'auth')
         );
         $this->assertEquals(
             'akaa-baseurl-xxxxxxxxxxx-xxxxxxxxxxxxx.luna.akamaiapis.net',
             $authentication->getHost()
         );
-        $this->assertEquals(2048, \PHPUnit_Framework_Assert::readAttribute($authentication, 'max_body_size'));
+        $this->assertEquals(2048, \PHPUnit\Framework\Assert::readAttribute($authentication, 'max_body_size'));
     }
 
     /**
@@ -455,13 +455,13 @@ class ClientTest extends \PHPUnit_Framework_TestCase
                 'client_secret' => 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=',
                 'access_token' => 'akab-access-token-xxx-xxxxxxxxxxxxxxxx'
             ),
-            \PHPUnit_Framework_Assert::readAttribute($authentication, 'auth')
+            \PHPUnit\Framework\Assert::readAttribute($authentication, 'auth')
         );
         $this->assertEquals(
             'akaa-baseurl-xxxxxxxxxxx-xxxxxxxxxxxxx.luna.akamaiapis.net',
             $authentication->getHost()
         );
-        $this->assertEquals(2048, \PHPUnit_Framework_Assert::readAttribute($authentication, 'max_body_size'));
+        $this->assertEquals(2048, \PHPUnit\Framework\Assert::readAttribute($authentication, 'max_body_size'));
     }
 
     /**
@@ -484,13 +484,13 @@ class ClientTest extends \PHPUnit_Framework_TestCase
                 'client_secret' => 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=',
                 'access_token' => 'akab-access-token-xxx-xxxxxxxxxxxxxxxx'
             ),
-            \PHPUnit_Framework_Assert::readAttribute($authentication, 'auth')
+            \PHPUnit\Framework\Assert::readAttribute($authentication, 'auth')
         );
         $this->assertEquals(
             'akaa-baseurl-xxxxxxxxxxx-xxxxxxxxxxxxx.luna.akamaiapis.net',
             $authentication->getHost()
         );
-        $this->assertEquals(2048, \PHPUnit_Framework_Assert::readAttribute($authentication, 'max_body_size'));
+        $this->assertEquals(2048, \PHPUnit\Framework\Assert::readAttribute($authentication, 'max_body_size'));
     }
 
     /**
@@ -516,13 +516,13 @@ class ClientTest extends \PHPUnit_Framework_TestCase
                 'client_secret' => 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=',
                 'access_token' => 'akab-access-token-xxx-xxxxxxxxxxxxxxxx'
             ),
-            \PHPUnit_Framework_Assert::readAttribute($authentication, 'auth')
+            \PHPUnit\Framework\Assert::readAttribute($authentication, 'auth')
         );
         $this->assertEquals(
             'akaa-baseurl-xxxxxxxxxxx-xxxxxxxxxxxxx.luna.akamaiapis.net',
             $authentication->getHost()
         );
-        $this->assertEquals(2048, \PHPUnit_Framework_Assert::readAttribute($authentication, 'max_body_size'));
+        $this->assertEquals(2048, \PHPUnit\Framework\Assert::readAttribute($authentication, 'max_body_size'));
     }
 
     /**
@@ -917,7 +917,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $client = new Client();
         $client->setLogger();
 
-        $logger = \PHPUnit_Framework_Assert::readAttribute($client, 'logger');
+        $logger = \PHPUnit\Framework\Assert::readAttribute($client, 'logger');
         $this->assertInstanceOf(
             \Closure::class,
             $logger

@@ -17,9 +17,9 @@ use Akamai\Open\EdgeGrid\Client;
 /**
  * @requires PHP 5.5
  */
-class DebugTest extends \PHPUnit_Framework_TestCase
+class DebugTest extends \PHPUnit\Framework\TestCase
 {
-    public function teardown()
+    public function teardown(): void
     {
         Client::setDebug(false);
     }
@@ -352,7 +352,7 @@ EOF;
     public function testStringResource()
     {
         $handler = new \Akamai\Open\EdgeGrid\Handler\Debug('php://stdout');
-        $fp = \PHPUnit_Framework_Assert::readAttribute($handler, 'fp');
+        $fp = \PHPUnit\Framework\Assert::readAttribute($handler, 'fp');
         $this->assertEquals('php://stdout', stream_get_meta_data($fp)['uri']);
     }
 

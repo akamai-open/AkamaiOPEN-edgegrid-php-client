@@ -19,3 +19,7 @@ akamai-open-edgegrid-client*.phar
 Thumbs.db
 Desktop.ini
 $RECYCLE.BIN/
+.phpdoc
+*.cache
+*.phar
+*.phar.gz

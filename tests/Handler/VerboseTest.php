@@ -17,9 +17,9 @@ use Akamai\Open\EdgeGrid\Client;
 /**
  * @requires PHP 5.5
  */
-class VerboseTest extends \PHPUnit_Framework_TestCase
+class VerboseTest extends \PHPUnit\Framework\TestCase
 {
-    public function teardown()
+    public function teardown(): void
     {
         Client::setVerbose(false);
     }
@@ -520,8 +520,8 @@ class VerboseTest extends \PHPUnit_Framework_TestCase
     {
         $verbose = new \Akamai\Open\EdgeGrid\Handler\Verbose('php://memory');
 
-        $fp = \PHPUnit_Framework_Assert::readAttribute($verbose, 'outputStream');
-        $fp2 = \PHPUnit_Framework_Assert::readAttribute($verbose, 'errorStream');
+        $fp = \PHPUnit\Framework\Assert::readAttribute($verbose, 'outputStream');
+        $fp2 = \PHPUnit\Framework\Assert::readAttribute($verbose, 'errorStream');
 
         $this->assertSame($fp, $fp2);
         $this->assertEquals(stream_get_meta_data($fp)['uri'], 'php://memory');
@@ -540,8 +540,8 @@ class VerboseTest extends \PHPUnit_Framework_TestCase
     {
         $verbose = new \Akamai\Open\EdgeGrid\Handler\Verbose('php://memory', 'php://temp');
 
-        $fp = \PHPUnit_Framework_Assert::readAttribute($verbose, 'outputStream');
-        $fp2 = \PHPUnit_Framework_Assert::readAttribute($verbose, 'errorStream');
+        $fp = \PHPUnit\Framework\Assert::readAttribute($verbose, 'outputStream');
+        $fp2 = \PHPUnit\Framework\Assert::readAttribute($verbose, 'errorStream');
 
         $this->assertNotSame($fp, $fp2);
         $this->assertEquals(stream_get_meta_data($fp)['uri'], 'php://memory');
